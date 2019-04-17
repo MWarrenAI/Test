@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Send HTML Form as JSON</title>
+<style>
+#myform {
+	margin:0 auto;
+	width:500px;
+	padding:14px;
+}
+
+label {
+	width: 10em;
+	float: left;
+	margin-right: 0.5em;
+	display: block;
+	vertical-align: middle;
+}
+.submit {
+	float:right;
+}
+
+fieldset {
+	background:#EBF4FB none repeat scroll 0 0;
+	border:2px solid #B7DDF2;
+	width: 450px;
+}
+
+legend {
+	color: #fff;
+	background: #80D3E2;
+	border: 1px solid #781351;
+	padding: 2px 6px
+}
+.elements {
+	padding:10px;
+}
+p {
+	border-bottom:1px solid #B7DDF2;
+	color:#666666;
+	font-size:12px;
+	margin-bottom:20px;
+	padding-bottom:10px;
+}
+span {
+	color:#666666;
+	font-size:12px;
+	margin-bottom:1px;
+	
+}
+.btn{
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  border: 1px solid #B7DDF2;
+  
+}
+
+.btn:hover{
+  color: #333333;
+  background-color: #e6e6e6;
+}
+
+</style>
+<script src="../assets/js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $("#btn").click(function(e){
+	 var jsonData = {};
+	 
+   var formData = $("#myform").serializeArray();
+  // console.log(formData);
+   
+   $.each(formData, function() {
+        if (jsonData[this.name]) {
+           if (!jsonData[this.name].push) {
+               jsonData[this.name] = [jsonData[this.name]];
+           }
+           jsonData[this.name].push(this.value || '');
+       } else {
+           jsonData[this.name] = this.value || '';
+       }
+	       
+	   
+   });
+   console.log(jsonData);
+   let h = new Headers();
+   h.append('Accept', 'application/json');
+	$.ajax(
+	{
+		url : "../assets/json/testt.json",
+		dataType: 'json', // Notice! JSONP <-- P (lowercase)
+     success:function(json){
+         // do stuff with json (in this case an array)
+         alert("Success");
+     },
+     error:function(){
+         alert("Error");
+     }      
+});
+    e.preventDefault();	
+});
+});
+</script>
+</head>
+
+<body>
+<div id="header">
+ Send Form's data as JSON
+</div>
+   
+<form id="myform" type="post">
+  <fieldset>
+    <legend>Ajax Form  </legend>
+    <p>We would love to hear from you. Please fill out this form</p>
+    <div class="elements">
+      <label for="name">Name :</label>
+      <input  required="required" type="text"  value="Girish Kumar Santhu" name="fname"  size="20"  />
+    </div>
+	 <div class="elements">
+      <label for="Age">Age :</label>
+      <input required="required" type="number" value="32" id="age" name="age" size="10" />
+    </div>	
+    <div class="elements">
+      <label for="pro"> Profession :</label>
+	  <select name="pro">
+   <option value="Student">Student</option>
+   <option value="Engineer" selected="selected">Engineer</option>
+   </select>
+    </div>  	
+	<div class="elements">
+	<label for="Gender">Gender: </label>
+      <input type="radio" name="gender" value="Male" checked="checked" id="r1"> Male 
+  <input type="radio" name="gender" value="Female" id="r2"> Female 
+</div>	
+    <div class="elements">
+      <label for="hobby">Hobby :</label>
+      <input type="checkbox" name="hobby[]" value="Sports" id="ch1" checked="checked"> Sports 
+  <input type="checkbox" name="hobby[]" value="Coding"  id="ch2"> Coding 
+   </div>
+   
+    <div class="submit">
+       <input type="submit" id="btn" name="btn" class="btn" value="Submit" />
+    </div>
+	<span class="elements">Press "Ctrl + Shift + J" to see sent JSON in console: <span>
+  </fieldset>
+</form>
+</body>
+</html>

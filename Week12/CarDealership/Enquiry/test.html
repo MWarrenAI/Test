@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset="utf-8">
+<title>Test</title>
+<link rel="stylesheet" href="../assets/CSS/Milo.css" >
+<body>
+<div class="page" id="page_login" style="background-color:#FFFFFF;">
+  <table class="page-container">
+    <tr>
+      <td class="page-container">
+        <img id="product_logo" src="http://cbno.biz/static//img/logo-placeholder.jpg"></img>
+        <br>
+        <span class="logo part-1">Product</span><span class="logo part-2">Logo</span>
+        <br>
+        <span class="tagline">Example Online Booking System</span>
+        <br>
+        <a target="_blank" href="#">Help</a>
+        <form class="login-container" onsubmit="gotoPage('page_book', event)">
+          <table style="table-layout:fixed; width:100%; height:100%;">
+            <tr>
+              <td style="width:100%;">
+                <input type="text" placeholder="Customer's first name">
+              </td>
+              <td style="width:6em;"><button id="button_login" style="width:6em;" title="Sign in to make a booking">Login</button></td>
+            <tr>
+          </table>
+        </form>
+        <div class="footer">
+            Brought to you by SomeCompany
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="page" id="page_book">
+  <div class="logo-container">
+    <span style="width: Calc(100% - 3rem); text-align:left; display: inline-block;">
+      <img id="product_logo" src="http://cbno.biz/static//img/logo-placeholder.jpg"></img>
+      <span class="logo part-1">Product</span><span class="logo part-2">Logo</span>
+    </span>
+    <span id="help_button_container">
+      <a id="button_help" target="_blank" href="#">
+        <i class="fa fa-question-circle button-help" aria-hidden="true" title="Click here for help"></i>
+      </a>
+    </span>
+  </div>
+  <div class="card">
+    <p class="card-title">Your Bookings for Event Name</p>
+    <div id="booking_table"></div>
+  </div>
+  <button onclick="gotoPage('page_login', event)" title="Sign out">Logout</button>
+  <div class="footer">
+    Click here for <a class="link" title="Click here for help">Help</a>
+  </div>
+</div>
+<div class="page" id="page_new_booking">
+  <div class="logo-container">
+    <span style="width: Calc(100% - 3rem); text-align:left; display: inline-block;">
+      <img id="product_logo" src="http://cbno.biz/static//img/logo-placeholder.jpg"></img>
+      <span class="logo part-1">Product</span><span class="logo part-2">Logo</span>
+    </span>
+    <span id="help_button_container">
+      <a id="button_help" target="_blank" href="#">
+        <i class="fa fa-question-circle button-help" aria-hidden="true" title="Click here for help"></i>
+      </a>
+    </span>
+  </div>
+  <div class="card">
+    <p id="new_booking_card_title" class="card-title">New Booking</p>
+    <div id="session_table"></div>
+  </div>
+  <button onclick="pageNewBooking_buttonBook(event)" title="Book the selected tickets">Book</button>
+  <button onclick="pageNewBooking_buttonCancel(event)" title="Discard your changes and return to the previous page">Cancel</button>
+  <div class="footer">
+    Click here for <a class="link" title="Click here for help">Help</a>
+  </div>
+</div>
+<div class="page" id="page_confirm_bookings">
+  <div class="logo-container">
+    <span style="width: Calc(100% - 3rem); text-align:left; display: inline-block;">
+      <img id="product_logo" src="http://cbno.biz/static//img/logo-placeholder.jpg"></img>
+      <span class="logo part-1">Product</span><span class="logo part-2">Logo</span>
+    </span>
+    <span id="help_button_container">
+      <a id="button_help" target="_blank" href="#">
+        <i class="fa fa-question-circle button-help" aria-hidden="true" title="Click here for help"></i>
+      </a>
+    </span>
+  </div>
+  <div class="card">
+    <p id="confirm_booking_card_title" class="card-title">Confirm Bookings</p>
+    <div id="confirm_bookings_table"></div>
+  </div>
+  <button onclick="pageConfirmBookings_buttonConfirm(event)" title="Save these bookings">Confirm</button>
+  <button onclick="pageConfirmBookings_buttonCancel(event)" title="Return to the previous page">Cancel</button>
+  <div class="footer">
+    Click here for <a class="link" title="Click here for help">Help</a>
+  </div>
+</div>
+<script src="../assets/js/jquery-3.3.1.js"></script>
+<script src="../assets/js/book.js"></script>
+<script src="../assets/js/login.js"></script>
+<script src="../assets/js/utilities.js"></script>
+<script src="../assets/js/input-type.js"></script>
+<script src="../assets/js/populate-selectbox.js"></script> 
+<script src="../assets/js/validation.js"></script>   
+<script src="../assets/js/super.js"></script>  
+</body>
+</html>

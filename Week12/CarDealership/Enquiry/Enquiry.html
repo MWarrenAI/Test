@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset="utf-8">
+<title>Enquire</title>
+<link rel="stylesheet" href="../assets/CSS/Milo.css" >
+</head>
+<body>
+
+	<div id="clipper">
+	<div id="logo">
+	<a href= "../index.html"><img class="img" src ="../assets/Images/Logo/Logofin.png" alt = "Home"/></a>
+	</div>	
+	<div id="Navigation">
+	<nav> 
+	<ul>
+		<li class="nav_item1"><a href= "../Cars/Cars.html"><img class="img" src ="../assets/buttons/Button/Cars.gif" onmouseout="this.src='../assets/buttons/Button/Cars.gif'" onmouseover="this.src='../assets/buttons/Hover/CarsHover.gif'" onclick="this.src='../assets/buttons/Pressed/CarsPressed.gif'" alt = "Cars"/></a></li>
+		<li class="nav_item2"><a href= "../Bookings/Bookings.html"><img class="img" src ="../assets/buttons/Button/Bookings.gif" onmouseout="this.src='../assets/buttons/Button/Bookings.gif'" onmouseover="this.src='../assets/buttons/Hover/BookingsHover.gif'" onclick="this.src='../assets/buttons/Pressed/BookingsPressed.gif'" alt = "Bookings"/></a></li>
+		<li class="nav_item3"><a href= "../Enquiry/Enquiry.html"><img class="img" src ="../assets/buttons/Hover/EnquireHover.gif" onmouseout="this.src='../assets/buttons/Hover/EnquireHover.gif'" onmouseover="this.src='../assets/buttons/Button/Enquire.gif'" onclick="this.src='../assets/buttons/Pressed/EnquirePressed.gif'" alt = "Enquire"/></a></li>
+		<li class="nav_item4"><a href= "../ContactUs/ContactUs.html"><img class="img" src ="../assets/buttons/Button/ContactUs.gif" onmouseout="this.src='../assets/buttons/Button/ContactUs.gif'" onmouseover="this.src='../assets/buttons/Hover/ContactUsHover.gif'" onclick="this.src='../assets/buttons/Pressed/ContactUsPressed.gif'" alt = "Contact Us"/></a></li>
+		<li class="nav_item5"><a href= "../AboutUs/AboutUs.html"><img class="img" src ="../assets/buttons/Button/AboutUs.gif" onmouseout="this.src='../assets/buttons/Button/AboutUs.gif'" onmouseover="this.src='../assets/buttons/Hover/AboutUsHover.gif'" onclick="this.src='../assets/buttons/Pressed/AboutUsPressed.gif'" alt = "About Us"/></a></li>
+	<li id="login">
+      <a id="login-trigger" href="#">
+        Log in <span>▼</span>
+      </a>
+      <div id="login-content">
+        <form id="loggy">
+          <fieldset id="inputs">
+            <input id="user" type="text" name="User" placeholder="Your Username" required>   
+            <input id="password" type="password" name="Password" placeholder="Password" required>
+          </fieldset>
+          <fieldset id="actions">
+            <input type="submit" id="submit" value="Log in" onclick="logit()">
+            <input type="checkbox" id="showPwd" onclick="Show()"> Show Password
+          </fieldset>
+        </form>
+      </div>                     
+    </li>
+		<li id="register"><a href="../Sign/sign.html">Register</a>
+    </li>
+	</ul>
+	</nav>
+	</div>
+	</div>
+	<br>
+	
+	<section>
+	<div id="Content">
+        <h1>Enquiry Details</h1>
+			<br>
+			<div class="container login">
+      <form id="login" action="/login/" method="post">
+        <div class="one-third column">
+        </div>
+        <div class="two-thirds column" id="main">
+          <fieldset>
+            <legend>Login and booking</legend>
+            Username:<input type="text" id="username" name="username"> <br>
+            Password:<input type="password" id="pwd" name="pwd">
+          </fieldset>
+        </div><!-- .two-thirds -->
+      </form>
+          </fieldset>
+		  <br>
+		  <p id="welcome"></p>
+		  <br>
+		  <input type="submit" value="Login" onclick="login">
+            <input type="checkbox" id="showPwd" onclick="show()"> Show Password
+			<br>
+			<br>
+		  </form>
+		  <form>
+          <fieldset>
+              <label for="brand"> Brand </label>
+              <select id="brand" name="brand">
+                <option value="choose">Please choose a Brand</option>
+                <option value="Alfa">Alfa</option>
+                <option value="Kia">Kia</option>
+				<option value="Peugeot">Peugeot</option>
+				<option value="Honda">Honda</option>
+				<option value="Lexus">Lexus</option>
+				<option value="Toyota">Toyota</option>
+              </select><br>
+              <label for="model"> Model </label>
+              <select id="model" name="model">
+                <option>Please choose a brand first</option>
+              </select>
+        
+		<!-- Load Partial html here -->
+			
+			<p>Book appointment for this car</p>
+			<label for="Time">Select your Time: </label>
+		<input type="time" class="form-control" placeholder="09:00" name="BookTime" id="booktime"/><br>
+		<label for="BookDate">Select your Booking Date: </label>
+		<input type="date" class="form-control" placeholder="12/04/2019" name="BookDate" id="bookdate"/><br>
+		<br>Address Line 1:<br><input type="text" id="ad1" name="Ad1">
+			  <br>Address Line 2:<br><input type="text" id="ad2" name="Ad2">
+			  <br>Country:<br><input type="text" id="country" name="Country">
+			  <br>County:<br><input type="text" id="county" name="County">
+			  <br>PostCode:<br><input type="text" id="pocode" name="Pocode">
+		</fieldset>
+		<br>
+		<input id="reset" type="submit" value="Reset" onclick="reset()"/>
+		<input id="showdes" type="submit" value="Show Description" onclick="desit()"/>
+		<input id="hidedes" type="submit" value="Hide Description" onclick="hidedes()"/>
+		<input id="bookit" type="submit" value="submit" onclick="Book()"/>
+		<input id="Bookings" type="submit" value="Load Bookings" onclick="LoadBook()"/>
+          </fieldset>
+      </form>
+    </div>
+	<br>
+	<div = "BookingTable">
+	<table id = "booktable">
+		<tr>
+			<th>Appointment id</th>
+			<th>Brand</th>
+			<th>Model</th>
+			<th>Appointment Time</th>
+			<th>Appointment Date</th>
+		</tr>
+		<tr>
+			<td><div id = "Appointment"></div></td>
+			<td><div id = "Brand"></div></td>
+			<td><div id = "Model"></div></td>
+			<td><div id = "AppTime"></div></td>
+			<td><div id = "AppDate"></div></td>
+		</tr>
+		
+	
+	</table>
+	</div>
+	</div><!-- .container -->
+	
+	</section>
+
+<script src="../assets/js/jquery-3.3.1.js"></script>
+<script src="../assets/js/table.js"></script>		
+<script src="../assets/js/book.js"></script>
+<script src="../assets/js/login.js"></script>
+<script src="../assets/js/utilities.js"></script>
+<script src="../assets/js/input-type.js"></script>
+<script src="../assets/js/populate-selectbox.js"></script> 
+<script src="../assets/js/validation.js"></script>
+</body>
+</html>

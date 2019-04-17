@@ -1,0 +1,11 @@
+// CLICK ON A SESSION TO LOAD THE DESCRIPTION
+function getDesc(equipmentType){
+		this = equipmentType;
+		var fragment = this.href;                               // Title is in href
+
+		fragment = fragment.replace('#', ' #');                 // Add space after#
+		$('#details').load(fragment);                           // To load info
+
+		$('#sessions a.current').removeClass('current');        // Update selected
+		$(this).addClass('current');
+	}

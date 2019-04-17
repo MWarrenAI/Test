@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset="utf-8">
+<title>Milo's</title>
+<link rel="stylesheet" href="assets/CSS/Milo.css" >
+<body>
+
+	<div id="clipper">
+	<div id="logo">
+	<a href= "index.html"><img class="img" src ="assets/Images/Logo/Logofin.png" alt = "Home"/></a>
+	</div>	
+	<div id="Nav">
+	<nav> 
+	<ul>
+		<li class="nav_item1"><a href= "Cars/Cars.html"><img class="img" src ="assets/buttons/Button/Cars.gif" onmouseout="this.src='assets/buttons/Button/Cars.gif'" onmouseover="this.src='assets/buttons/Hover/CarsHover.gif'" onclick="this.src='assets/buttons/Pressed/CarsPressed.gif'" alt = "Cars"/></a></li>
+		<li class="nav_item2"><a href= "Bookings/Bookings.html"><img class="img" src ="assets/buttons/Button/Bookings.gif" onmouseout="this.src='assets/buttons/Button/Bookings.gif'" onmouseover="this.src='assets/buttons/Hover/BookingsHover.gif'" onclick="this.src='assets/buttons/Pressed/BookingsPressed.gif'" alt = "Bookings"/></a></li>
+		<li class="nav_item3"><a href= "Enquiry/Enquiry.html"><img class="img" src ="assets/buttons/Button/Enquire.gif" onmouseout="this.src='assets/buttons/Button/Enquire.gif'" onmouseover="this.src='assets/buttons/Hover/EnquireHover.gif'" onclick="this.src='assets/buttons/Pressed/EnquirePressed.gif'" alt = "Enquire"/></a></li>
+		<li class="nav_item4"><a href= "ContactUs/ContactUs.html"><img class="img" src ="assets/buttons/Button/ContactUs.gif" onmouseout="this.src='assets/buttons/Button/ContactUs.gif'" onmouseover="this.src='assets/buttons/Hover/ContactUsHover.gif'" onclick="this.src='assets/buttons/Pressed/ContactUsPressed.gif'" alt = "Contact Us"/></a></li>
+		<li class="nav_item5"><a href= "AboutUs/AboutUs.html"><img class="img" src ="assets/buttons/Button/AboutUs.gif" onmouseout="this.src='assets/buttons/Button/AboutUs.gif'" onmouseover="this.src='assets/buttons/Hover/AboutUsHover.gif'" onclick="this.src='assets/buttons/Pressed/AboutUsPressedG.gif'" alt = "About Us"/></a></li>
+	<li id="login">
+      <a id="login-trigger" href="#">
+        Log in <span>?</span>
+      </a>
+      <div id="login-content">
+        <form>
+          <fieldset id="inputs">
+            <input id="user" type="text" name="User" placeholder="Your Username" required>   
+            <input id="password" type="password" name="Password" placeholder="Password" required>
+          </fieldset>
+          <fieldset id="actions">
+            <input type="submit" id="submit" value="Log in">
+            <label><input type="checkbox" id="showPwd" onclick="Show()"> Show Password</label>
+          </fieldset>
+        </form>
+      </div>                     
+    </li>
+		<li id="register"><a href="Sign/sign.html">Register</a>
+    </li>
+	</ul>
+	</nav>
+	</div>
+	</div>	
+<br>	
+<div class="slideshow-cont">
+
+<div class="mySlides fade">
+  <img src= "assets/images/Slider/peugeotedit.jpg" alt = "Peugeot 3008">
+  <div class="text"><h3> Peugeot 3008 </h3> <p><br>The Peugeot 3008 SUV has relaunched with a new design, improved engine range and state of the art technology.</p> </div>
+</div>
+
+<div class="mySlides fade">
+  <img src="assets/images/Slider/niroedit.jpg" alt = "Kia Niro">
+  <div class="text"><h3> Kia Niro </h3> <p><br>The Kia Niro offers hybrid technology to buyers in the small Crossover segment.</p> </div>
+</div>
+
+<div class="mySlides fade">
+  <img src="assets/images/Slider/lexusedit.jpg" alt = "Lexus RX">
+  <div class="text"><h3> Lexus RX </h3> <br> <p>The Lexus RX is a well-built SUV that swaps sporty styling and driving aspirations in favour of being well built and extremely comfortable.</p> </div>
+</div>
+
+<div class="mySlides fade">
+  <img src="assets/images/Slider/toyotaedit.jpg" alt = "Toyota Prius">
+  <div class="text"><h3> Toyota Prius </h3> <br> <p>The fourth generation Prius promises many improvements, and represents a significant step forward for Toyota.</p></div>
+</div>
+<div class="mySlides fade">
+  <img src="assets/images/Slider/alfaedit.jpg" alt = "Alfa Romeo Giulia">
+  <div class="text"><h3> Alfa Romeo Giulia </h3> <br> <p>Crafted to attract attention, the all-new Alfa Romeo Giulia perfectly combines expression with meticulous engineering. Underneath its stylish exterior, it’s a triumph of advanced technology, independent spirit and outstanding performance.</p></div>
+</div>
+<div class="mySlides fade">
+  <img src="assets/images/Slider/hondaedit.jpg" alt = "Honda Civic">
+  <div class="text"><h3> Honda Civic </h3> <br> <p>The sportiest Civic ever comes with turbocharged power, sleek new styling, and a class leading spacious interior.</p></div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
+  <span class="dot" onclick="currentSlide(6)"></span> 
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+<br>
+	<section>
+	<div id="Content">
+	<h2> Welcome to Milo's Car Dealership Website </h2>
+	<br>
+	<h3> Introduction </h3>
+	<br>
+	<p> Recently up and coming, Milo's is one of Europe's largest independently owned car companies. </p>
+	<p> Situated in the UK, we offer customers reliable, high quality and reasonable prices for Buying and Renting New Cars. </p>
+	</div>
+	</section>
+
+    
+	<div id="Ender">
+	<footer>
+	<div class="foottext"><p>&copy;Milo's Car Dealership</p> <p>Contact us: <a href = "mailto:info@Milos.mail"> info@Milos.mail</a></p> <br> <p>All Rights Reserved.</p>
+	</div>
+	</footer>
+	</div>
+
+<script src="assets/js/jquery-3.3.1.js"></script>
+<script src="assets/js/login.js"></script>
+<script src="assets/js/utilities.js"></script>
+<script src="assets/js/input-type.js"></script>
+<script src="assets/js/validation.js"></script> 	
+</body>
+</html>
