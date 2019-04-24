@@ -1,27 +1,33 @@
-<html>
-   <head>
-      <meta content = "text/html; charset = ISO-8859-1" http-equiv = "content-type">
-	
-      <title>tutorialspoint.com JSON</title>
-   </head>
-	<input id="Bookings" type="submit" value="Load Bookings" onclick="LoadBook()"/>
-   	<table id = "booktable">
-		<tr>
-			<th>Appointment id</th>
-			<th>Brand</th>
-			<th>Model</th>
-			<th>Appointment Time</th>
-			<th>Appointment Date</th>
-		</tr>
-		<tr>
-			<td><div id = "Appointment"></div></td>
-			<td><div id = "Brand"></div></td>
-			<td><div id = "Model"></div></td>
-			<td><div id = "AppTime"></div></td>
-			<td><div id = "AppDate"></div></td>
-		</tr>
-		
-	
-	</table>
-<script src="../assets/js/table.js"></script>		
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="table.css"/>
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input id="model" type="text" value="" placeholder="Enter Model" />
+      <input id="brand" type="text" value="" placeholder="Enter Brand" />
+      <p>Book appointment for this car</p>
+	  <label for="BookDate">Select your Booking Date: </label>
+        <input type="date" class="form-control" placeholder="12/04/2019" name="Date" id="date"/><br>
+            <label type="Time" for="Time">Select your Time: </label>
+        <input type="time" class="form-control" placeholder="09:00" name="Time" id="time"/><br>
+	  <input type="submit" />
+    </form>
+    <table id="booktable">
+      <tr>
+        <th>Appointment id</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Appointment Date</th>
+		<th>Appointment Time</th>
+      </tr>
+    </table>
+
+    <script src="../assets/js/table.js"></script>
+  </body>
 </html>

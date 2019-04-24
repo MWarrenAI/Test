@@ -7,7 +7,7 @@
 
 // Dependencies: jQuery, jQueryUI, birthday.js, styles.css
 
-(function () {
+(function init() {
   document.forms.register.noValidate = true; // Disable HTML5 validation - using JavaScript instead
   // -------------------------------------------------------------------------
   //  A) ANONYMOUS FUNCTION TRIGGERERD BY THE SUBMIT EVENT

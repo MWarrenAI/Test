@@ -1,50 +1,98 @@
-	JSONuser = ("../assets/json/user.json");
-	myJSON = JSON.stringify(userstored)
-	var userstored = [];
+const form = document.querySelector('form');
+const reguser = document.getElementById('reguser');
+const fname = document.getElementById('fname');
+const sname = document.getElementById('sname');
+const password1 = document.getElementById('password1');
+const password2 = document.getElementById('password2');
+const add1 = document.getElementById('add1');
+const add2 = document.getElementById('add2');
+const country = document.getElementById('country');
+const county = document.getElementById('county');
+const pcode = document.getElementById('pcode');
 
-function init()
+const baseURL = 'http://localhost:3001/users';
+const headers = { 'content-type': 'application/json' };
+const userTable = document.getElementById('usertable');
+
+const users = [];
+
+function createUser() {
+  return {
+    reguser: reguser.value,
+    fname: fname.value,
+	sname: sname.value,
+	password: password1.value,
+	add1: add1.value,
+	add2: add2.value,
+	country: country.value,
+	county: county.value,
+	pcode: pcode.value
+  };
+}
+
+async function postUser(app) {
+  const response = await fetch(baseURL, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(app)
+  });
+  const json = await response.json();
+  return json;
+}
+
+async function getUsers() {
+  const response = await fetch(baseURL);
+  const json = await response.json();
+  return json;
+}
+
+sign.addEventListener('click', e => {
+  const app = createUser();
+  postUser(app).then(() => {
+    addToTable(app);
+  });
+  Clear();
+});
+
+function addToTable(app) {
+  const row = document.createElement('tr');
+  const td = `
+    <td>${app.id}</td>
+    <td>${app.reguser}</td>
+    <td>${app.fname}</td>
+    <td>${app.sname}</td>
+	<td>${app.password}</td>
+	<td>${app.add1}</td>
+	<td>${app.add2}</td>
+	<td>${app.country}</td>
+	<td>${app.county}</td>
+	<td>${app.pcode}</td>
+  `;
+  row.innerHTML = td;
+  userTable.appendChild(row);
+}
+
+function init() {
+  getUsers().then(apps => {
+    apps.forEach(app => addToTable(app));
+  });
+}
+
+function Clear()
 {
-	if (localStorage.userstored)
-		userstored = JSON.parse(localStorage.userstored);
-		for (let i = 0; i < userstored.length; i++) {
-			let reguser = userstored[i].reguser;
-			let fname = userstored[i].fname;
-			let sname = userstored[i].sname;
-			let password = userstored[i].password;
-    }
+ 	reguser.value= "";
+	fname.value= "";
+	sname.value= "";
+	password1.value= "";
+	password2.value= "";
+	add1.value= "";
+	add2.value= "";
+	country.value= "";
+	county.value= "";
+	pcode.value= "";
 }
 
-function Register() 
-{	
-	let newuser = {
-		reguser:document.getElementById("reguser").value,
-		fname:document.getElementById("fname").value,
-		sname:document.getElementById("sname").value,
-		password:document.getElementById("password1").value
-		
-	}
-	userstored.push(newuser);	
-	myJSON = JSON.stringify(newuser);
-	localStorage.setItem("user.json", myJSON);
-		reguser.innerHTML = reguser;
-		fname.innerHTML = fname;
-		sname.innerHTML = sname;
-		password.innerHTML = password;
-	
-	console.warn('added', {userstored} );
-	let pre = document.querySelector('#msg pre');
-}
-
-function clear()
-{
- 	document.getElementById("reguser").value= "";
-	document.getElementById("fname").value= "";
-	document.getElementById("sname").value= "";
-	document.getElementById("password1").value= "";
-	document.getElementById("password2").value= "";
-}
-
-(function Showpass() {
+function Showpass() {
 
   let password1 = document.getElementById('password1');     // Get password input
   let password2 = document.getElementById('password2');     // Get password input  
@@ -64,4 +112,6 @@ function clear()
       alert('This browser cannot switch type'); // Say that cannot switch type
     }
   });
- }());
+ }
+ 
+init();

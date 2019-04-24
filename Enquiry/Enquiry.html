@@ -46,28 +46,12 @@
 	
 	<section>
 	<div id="Content">
-        <h1>Enquiry Details</h1>
+        <h1>Booking Details</h1>
 			<br>
-			<div class="container login">
-      <form id="login" action="/login/" method="post">
-        <div class="one-third column">
-        </div>
-        <div class="two-thirds column" id="main">
-          <fieldset>
-            <legend>Login and booking</legend>
-            Username:<input type="text" id="username" name="username"> <br>
-            Password:<input type="password" id="pwd" name="pwd">
-          </fieldset>
-        </div><!-- .two-thirds -->
       </form>
           </fieldset>
 		  <br>
 		  <p id="welcome"></p>
-		  <br>
-		  <input type="submit" value="Login" onclick="login">
-            <input type="checkbox" id="showPwd" onclick="show()"> Show Password
-			<br>
-			<br>
 		  </form>
 		  <form>
           <fieldset>
@@ -80,66 +64,45 @@
 				<option value="Honda">Honda</option>
 				<option value="Lexus">Lexus</option>
 				<option value="Toyota">Toyota</option>
-              </select><br>
-              <label for="model"> Model </label>
+              </select>
+              <label for="model"> Model</label>
               <select id="model" name="model">
                 <option>Please choose a brand first</option>
               </select>
-        
+				<br>
 		<!-- Load Partial html here -->
-			
+				<br>
 			<p>Book appointment for this car</p>
 			<label for="Time">Select your Time: </label>
 		<input type="time" class="form-control" placeholder="09:00" name="BookTime" id="booktime"/><br>
 		<label for="BookDate">Select your Booking Date: </label>
 		<input type="date" class="form-control" placeholder="12/04/2019" name="BookDate" id="bookdate"/><br>
-		<br>Address Line 1:<br><input type="text" id="ad1" name="Ad1">
-			  <br>Address Line 2:<br><input type="text" id="ad2" name="Ad2">
-			  <br>Country:<br><input type="text" id="country" name="Country">
-			  <br>County:<br><input type="text" id="county" name="County">
-			  <br>PostCode:<br><input type="text" id="pocode" name="Pocode">
 		</fieldset>
-		<br>
 		<input id="reset" type="submit" value="Reset" onclick="reset()"/>
 		<input id="showdes" type="submit" value="Show Description" onclick="desit()"/>
 		<input id="hidedes" type="submit" value="Hide Description" onclick="hidedes()"/>
 		<input id="bookit" type="submit" value="submit" onclick="Book()"/>
-		<input id="Bookings" type="submit" value="Load Bookings" onclick="LoadBook()"/>
-          </fieldset>
       </form>
-    </div>
-	<br>
-	<div = "BookingTable">
-	<table id = "booktable">
-		<tr>
-			<th>Appointment id</th>
-			<th>Brand</th>
-			<th>Model</th>
-			<th>Appointment Time</th>
-			<th>Appointment Date</th>
-		</tr>
-		<tr>
-			<td><div id = "Appointment"></div></td>
-			<td><div id = "Brand"></div></td>
-			<td><div id = "Model"></div></td>
-			<td><div id = "AppTime"></div></td>
-			<td><div id = "AppDate"></div></td>
-		</tr>
-		
-	
-	</table>
+	  <br>
+    <table id="booktable">
+      <tr>
+        <th>Appointment id</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Appointment Date</th>
+		<th>Appointment Time</th>
+      </tr>
+    </table>
 	</div>
-	</div><!-- .container -->
-	
 	</section>
-
 <script src="../assets/js/jquery-3.3.1.js"></script>
 <script src="../assets/js/table.js"></script>		
 <script src="../assets/js/book.js"></script>
+<script src="../assets/js/loginready.js"></script>
 <script src="../assets/js/login.js"></script>
 <script src="../assets/js/utilities.js"></script>
 <script src="../assets/js/input-type.js"></script>
 <script src="../assets/js/populate-selectbox.js"></script> 
-<script src="../assets/js/validation.js"></script>
+<!-- <script src="../assets/js/validation.js"></script> -->
 </body>
 </html>

@@ -1,43 +1,75 @@
-function LoadBook() {
-            var data_file = "../assets/json/book.json";
-            var http_request = new XMLHttpRequest();
-            try{
-               // Opera 8.0+, Firefox, Chrome, Safari
-               http_request = new XMLHttpRequest();
-            }catch (e) {
-               // Internet Explorer Browsers
-               try{
-                  http_request = new ActiveXObject("Msxml2.XMLHTTP");
-					
-               }catch (e) {
-				
-                  try{
-                     http_request = new ActiveXObject("Microsoft.XMLHTTP");
-                  }catch (e) {
-                     // Something went wrong
-                     alert("Your browser broke!");
-                     return false;
-                  }
-					
-               }
-            }
-			
-            http_request.onreadystatechange = function() {
-			
-               if (http_request.readyState == 4  ) {
-                  // Javascript function JSON.parse to parse JSON data
-                  var jsonObj = JSON.parse(http_request.responseText);
+const form = document.querySelector('form')
+const model = document.getElementById('model')
+const brand = document.getElementById('brand')
+const bookTable = document.getElementById('booktable')
+const sign = document.getElementById('sign')
 
-                  // jsonObj variable now contains the data structure and can
-                  // be accessed as jsonObj.name and jsonObj.country.
-                  document.getElementById("Appointment").innerHTML = jsonObj.Appointment;
-                  document.getElementById("Brand").innerHTML = jsonObj.Brand;
-				  document.getElementById("Model").innerHTML = jsonObj.Model;
-				  document.getElementById("AppTime").innerHTML = jsonObj.AppTime;
-				  document.getElementById("AppDate").innerHTML = jsonObj.AppDate;
-               }
-            }
-			
-            http_request.open("GET", data_file, true);
-            http_request.send();
-         }
+const baseURL = 'http://localhost:3000/appointments'
+const headers = { 'content-type': 'application/json' }
+
+// not the best for a unique ID but should suffice
+const makeID = () => `${Date.now()}-${Math.floor(Math.random())}`
+
+const appointments = []
+
+function createAppointment() {
+  return {
+    id: makeID(),
+    brand: brand.value,
+    model: model.value,
+	date: date.value,
+	time: time.value
+  }
+}
+
+async function postApp(app) {
+  const response = await fetch(baseURL, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(app)
+  })
+  const json = await response.json()
+  return json
+}
+
+async function getAppointments() {
+  const response = await fetch(baseURL)
+  const json = await response.json()
+  return json
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  const app = createAppointment()
+  postApp(app).then(() => {
+    addToTable(app)
+  })
+  reset()
+})
+
+function addToTable(app) {
+  const row = document.createElement('tr')
+  const td = `
+    <td>${app.id}</td>
+    <td>${app.brand}</td>
+    <td>${app.model}</td>
+    <td>${app.date}</td>
+	<td>${app.time}</td>
+  `
+  row.innerHTML = td
+  bookTable.appendChild(row)
+}
+
+function reset() {
+  model.value = ''
+  brand.value = ''
+  date.value = ''
+  time.value = ''
+}
+
+function init() {
+  getAppointments().then(apps => {
+    apps.forEach(app => addToTable(app))
+  })
+}
+init()
